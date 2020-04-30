@@ -8,14 +8,18 @@ import "syft_proto/execution/v1/state.proto";
 import "syft_proto/execution/v1/placeholder.proto";
 import "syft_proto/types/syft/v1/id.proto";
 
+message ActionList {
+    repeated syft_proto.execution.v1.ComputationAction value = 1;
+}
 
 message Role {
     syft_proto.types.syft.v1.Id id = 1;
-    repeated syft_proto.execution.v1.ComputationAction actions = 2;
+    map<string, ActionList> actions = 2;
     syft_proto.execution.v1.State state = 3;
     repeated syft_proto.execution.v1.Placeholder placeholders = 4;
     repeated syft_proto.types.syft.v1.Id input_placeholder_ids = 5;
     repeated syft_proto.types.syft.v1.Id output_placeholder_ids = 6;
     repeated string tags = 7;
     string description = 8;
+    string base_framework = 9;
 }
